@@ -1,0 +1,49 @@
+<!--
+  @author            : Vrushabh Uprikar
+  @last modified on  : 08-10-2021
+  @last modified by  : Vrushabh Uprikar
+  Modifications Log
+  Ver   Date         Author             Modification
+  1.0   08-10-2021   Vrushabh Uprikar   Initial Version
+-->
+<template>
+	<lightning-card>
+
+		<div class="slds-grid slds-grid_vertical">
+			<div class="slds-col site-text-heading_x-large slds-align_absolute-center">
+				<h2 class="doc">HOME LOAN EMI Calculator</h2>
+			</div>
+			<div class="slds-col">
+				<lightning-slider label="Loan Amount"
+					step="10000"
+					min="10000"
+					max="100000000"
+					value={slideValue}
+					onchange={sliderChange}>
+				</lightning-slider>
+			</div>
+			<div class="slds-col">
+				<lightning-input type="number"
+					label="Loan Amount"
+					variant="standard"
+					name="Loan Ammount"
+					placeholder="Enter Loan Ammount .."
+					value={slideValue}></lightning-input>
+
+			</div>
+			<div class="slds-col">
+				<lightning-slider label="Tenure"
+					step="10000"
+					min="10000"
+					max="100000000"
+					value={slideValue}
+					onchange={sliderChange}>
+				</lightning-slider>
+			</div>
+			<div class="slds-col">
+
+			</div>
+		</div>
+
+	</lightning-card>
+</template>
