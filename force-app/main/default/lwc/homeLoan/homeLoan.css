@@ -2,3 +2,11 @@ h2.doc {
     font-size: 1.728rem;
     margin: 2rem 0 1rem;
 }
+
+.fontsize{
+    font-size: 20px;
+}
+
+.subtitle{
+    font-size: 1rem;
+}

@@ -1,6 +1,6 @@
 <!--
   @author            : Vrushabh Uprikar
-  @last modified on  : 08-10-2021
+  @last modified on  : 11-10-2021
   @last modified by  : Vrushabh Uprikar
   Modifications Log
   Ver   Date         Author             Modification
@@ -9,39 +9,113 @@
 <template>
 	<lightning-card>
 
-		<div class="slds-grid slds-grid_vertical">
+		<div class="slds-grid slds-grid_vertical slds-p-horizontal_small">
 			<div class="slds-col site-text-heading_x-large slds-align_absolute-center">
 				<h2 class="doc">HOME LOAN EMI Calculator</h2>
 			</div>
-			<div class="slds-col">
+			<div class="slds-col slds-p-vertical_small">
 				<lightning-slider label="Loan Amount"
 					step="10000"
 					min="10000"
 					max="100000000"
-					value={slideValue}
-					onchange={sliderChange}>
+					value={loanAmount}
+					onchange={onLoanAmountChange}>
 				</lightning-slider>
 			</div>
-			<div class="slds-col">
+			<div class="slds-col slds-p-vertical_small">
 				<lightning-input type="number"
 					label="Loan Amount"
 					variant="standard"
 					name="Loan Ammount"
 					placeholder="Enter Loan Ammount .."
-					value={slideValue}></lightning-input>
-
+					value={loanAmount}
+					onchange={onLoanAmountChange}></lightning-input>
 			</div>
-			<div class="slds-col">
-				<lightning-slider label="Tenure"
-					step="10000"
-					min="10000"
-					max="100000000"
-					value={slideValue}
-					onchange={sliderChange}>
+			<div class="slds-col slds-p-vertical_small">
+				<lightning-slider label="Tenure Yr"
+					step="1"
+					min="1"
+					max="100"
+					value={tenure}
+					onchange={onTenureChange}>
 				</lightning-slider>
 			</div>
-			<div class="slds-col">
-
+			<div class="slds-col slds-p-vertical_small">
+				<lightning-input type="number"
+					label="Tenure Yr"
+					variant="standard"
+					name="Tenure"
+					placeholder="Enter Tenure in years .."
+					value={tenure}
+					onchange={onTenureChange}></lightning-input>
+			</div>
+			<div class="slds-col slds-p-vertical_small">
+				<lightning-slider label="Rate of Interest"
+					step="0.5"
+					min="1"
+					max="25"
+					value={rateOfInterest}
+					onchange={onRateOfInterestChange}>
+				</lightning-slider>
+			</div>
+			<div class="slds-col slds-p-vertical_small">
+				<lightning-input type="number"
+					label="Rate of Interest %"
+					variant="standard"
+					name="Rate of Interest %"
+					placeholder="Enter Rate of Interest .."
+					value={rateOfInterest}
+					onchange={onRateOfInterestChange}></lightning-input>
+			</div>
+			<div class="slds-col slds-p-vertical_small slds-align_absolute-center">
+				<lightning-button variant="success"
+					label="Calculate"
+					title="Calculate"
+					class="fontsize"
+					onclick={onCalculateClick}></lightning-button>
+			</div>
+		</div>
+		<div class="slds-grid slds-grid_vertical slds-align_absolute-center slds-p-horizontal_small">
+			<div class="slds-col slds-p-vertical_small slds-align_absolute-center">
+				<h2 class="doc">Your Monthly Loan EMI: Rs {monthlyEMI}</h2>
+			</div>
+		</div>
+		<div class="slds-grid slds-grid_vertical slds-p-horizontal_small subtitle">
+			<div class="slds-col slds-p-vertical_small slds-align_absolute-center">
+				<h2><b>Break-up of all total amount payable</b></h2>
+			</div>
+			<div class="slds-col slds-grid slds-wrap">
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span>Loan Amount</span>
+				</div>
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span></span>
+				</div>
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span>{loanAmount}</span>
+				</div>
+			</div>
+			<div class="slds-col slds-grid slds-wrap">
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span>Total Interest Due</span>
+				</div>
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span></span>
+				</div>
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span>{totalInterest}</span>
+				</div>
+			</div>
+			<div class="slds-col slds-grid slds-wrap">
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span>Total Amount Payable</span>
+				</div>
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span></span>
+				</div>
+				<div class="slds-col slds-size_4-of-12 slds-float_left">
+					<span>{totalAmount}</span>
+				</div>
 			</div>
 		</div>
 
